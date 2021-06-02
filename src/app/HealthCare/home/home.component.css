@@ -1,0 +1,15 @@
+
+  
+  .footerbg {
+    background-color: rgba(148, 150, 151, 0.63);
+  }
+  img{
+      float: right;
+      margin: bottom 0% ;
+  }
+  .clearfix::container {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  

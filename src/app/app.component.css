@@ -1,0 +1,33 @@
+.navbar {
+    background: rgba(157, 201, 226, 0.85);
+  }
+  
+  .dropdown-menu {
+    background: rgba(245, 245, 247, 1);
+  }
+  
+  .navbar a:hover {
+    animation: pulse;
+    animation-duration: 5s;
+  }
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    text-align:inline;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  .navbar-brand{
+      font-family:Georgia, 'Times New Roman', Times, serif;
+  }
+  .img{
+      margin: 3px 3px;
+      padding-top: 0%;
+  }
