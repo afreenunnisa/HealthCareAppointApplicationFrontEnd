@@ -61,6 +61,7 @@ export class UserRegistrationComponent implements OnInit {
         userU.role = this.userForm.get('role')?.value;
         this.userServ.registerUser(userU).subscribe(
           (data) => {
+            
             this.changeEvent.emit(data);
           },
           (error) => {

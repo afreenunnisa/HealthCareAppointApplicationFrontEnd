@@ -114,29 +114,21 @@ const routes: Routes = [
   {
     path: 'diagnosticCenter',
     component: DiagnosticCenterComponent,
+    canActivate: [AdminGuard],
     children: [
-      { path: 'all', component: GetallcentersComponent,
-        canActivate:[UserGuard] 
-      },
-      { path: 'centerhome', component: CenterhomeComponent ,
-      canActivate: [AdminGuard],
-      },
-      { path: 'add', component: AddcenterComponent,
-      canActivate: [AdminGuard], },
-      { path: 'update/:diagonasticCenterid', component: UpdatecenterComponent,
-      canActivate: [AdminGuard],
-      },
+      { path: 'all', component: GetallcentersComponent },
+      { path: 'centerhome', component: CenterhomeComponent },
+      { path: 'add', component: AddcenterComponent },
+      { path: 'update/:diagonasticCenterid', component: UpdatecenterComponent },
       {
         path: 'testDetails/:diagonasticCenterid',
         component: TestdetailsComponent,
-        canActivate: [AdminGuard],
       },
       {
         path: 'addTest/:diagonasticCenterid',
         component: AddtesttocenterComponent,
-        canActivate: [AdminGuard],
       },
-
+      
     ],
   },
   {

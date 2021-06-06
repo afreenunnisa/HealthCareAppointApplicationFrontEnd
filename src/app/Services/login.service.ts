@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { catchError, finalize, shareReplay, skip } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { catchError,shareReplay } from 'rxjs/operators';
 import { User } from '../Model/user';
 
 
