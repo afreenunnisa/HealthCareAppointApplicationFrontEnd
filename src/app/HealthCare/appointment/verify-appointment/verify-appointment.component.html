@@ -1,1 +1,68 @@
-<p>verify-appointment works!</p>
+<div class="container"
+  *ngIf="hasAppointments; else noapps"
+>
+  <div class="col-4 input-group">
+    <input
+      type="text"
+      [(ngModel)]="search"
+      class="form-control mb-3"
+      placeholder="Search By Appointment Id,Date,Center"
+    />
+  </div>
+  <div
+    class="card mb-5 rounded border shadow-sm"
+    *ngFor="let i of appointments | filter: search"
+  >
+    <div class="card-header">
+      <div class="row">
+        <div class="col-3 col-sm-2 col-md-4">
+          {{ i.appointmentdate }}
+        </div>
+        <div class="col-3 col-sm-4 col-md-4">
+          Appointment ID : {{ i.id}}
+        </div>
+        <div class="col -3col-sm-2 col-md-2">
+          <button class="btn" (click)="verify(i)"
+          type="submit">
+           verify
+          </button>
+        </div>
+        <div class="col-3 col-sm-2 col-md-2">
+          <button class="btn" (click)="reject(i)" type="submit">
+            reject
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-columns mt-3 mb-3" *ngIf="i.centers != null">
+      <div class="col">
+        Diagnostic Center :&nbsp; {{ i.centers.cname }}
+      </div>
+      <div class="col">Email :&nbsp; {{ i.centers.contactemail }}</div>
+      <div class="col">
+        Contact No: &nbsp;+91
+        {{ i.centers.contactno }}
+      </div>
+      <div class="col">Address :&nbsp; {{ i.centers.address }}</div>
+    </div>
+   <!-- <div
+      class="card-footer"
+      *ngIf="i.tests != null && i.tests.length > 0"
+    >
+      <h5 class="card-title">Tests Opted For :</h5>
+      <div
+        class="card-text"
+        *ngFor="let dt of i.tests | filter: search"
+      >
+        {{ dt.testName }}
+      </div>
+    </div>-->
+  </div>
+</div>
+
+<ng-template #noapps>
+  <div class="container">
+    <h1 class="text-muted text-center">You Have No Appointments To verify</h1>
+  </div>
+</ng-template>

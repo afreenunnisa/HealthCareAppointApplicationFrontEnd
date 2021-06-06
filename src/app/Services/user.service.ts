@@ -12,13 +12,13 @@ export class UserService {
 
   getAll() {
     return this.http
-      .get<User[]>('http://localhost:8888/user/getAll')
+      .get<User[]>('http://localhost:8083/api/v1/getusers')
       .pipe(catchError(this.handleError), shareReplay());
   }
 
-  updateUser(user: User) {
+ updateUser(user: User) {
     return this.http
-      .put<User>('http://localhost:8888/user/updateUser', {
+      .put<User>('http://localhost:8083/api/v1/updateUser', {
         username: user.username,
         password: user.password,
         userid: user.id,
@@ -29,7 +29,7 @@ export class UserService {
 
   registerAdmin(user: User) {
     return this.http
-      .post<User>('http://localhost:8888/admin/registeradmin', {
+      .post<User>('http://localhost:8083/admin/registerAdmin', {
         username: user.username,
         password: user.password,
         role: 'ADMIN',
@@ -38,7 +38,7 @@ export class UserService {
   }
   registerUser(user: User) {
     return this.http
-      .post<User>('http://localhost:8888/user/adduser', {
+      .post<User>('http://localhost:8083/api/v1/adduser', {
         username: user.username,
         password: user.password,
         role: 'user',
@@ -46,9 +46,9 @@ export class UserService {
       .pipe(catchError(this.handleError), shareReplay());
   }
 
-  deleteUser(id: number) {
+ deleteUser(id: number) {
     return this.http
-      .delete<User>('http://localhost:8888/admin/deleteAdmin/' + id)
+      .delete<User>('http://localhost:8083/api/v1/deleteuser' + id)
       .pipe(catchError(this.handleError), shareReplay());
   }
   handleError(error: HttpErrorResponse) {

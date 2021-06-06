@@ -1,1 +1,42 @@
-<p>getallcenters works!</p>
+<div class="container" style="background-color: rgb(112, 136, 240);">
+  <h4>Diagntic Centers Avaliable</h4>
+</div>
+<br>
+<div class="input-icons" align="center">
+  <div align="center">
+    <i class="bi bi-search"></i>
+    <input class="form-control" style="width: 50rem;" type="text" [(ngModel)]="searchText"
+      placeholder="Search by Center ID, Center Name or City">
+</div>
+<hr>
+<br>
+<div class="row">
+  <div class="col-4 mx-auto text-center">
+      <img src="../../../../assets/images/dcuser.jpeg" style="width: 400px;">
+  </div>
+</div>
+<br>
+<br>
+  <div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Diagnostic Center ID</th>
+          <th>Diagnostic Center Name</th>
+          <th>Contact Email</th>
+          <th>Address</th>
+          <th>Conatct no</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of centers">
+          <td>{{c.id}}</td>
+          <td>{{c.cname}}</td>
+          <td>{{c.contactemail}}</td>
+          <td>{{c.address}}</td>
+          <td>{{c.contactno}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+</div>

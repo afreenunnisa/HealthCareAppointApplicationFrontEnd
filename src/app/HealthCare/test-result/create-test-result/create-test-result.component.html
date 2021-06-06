@@ -1,1 +1,41 @@
-<p>create-test-result works!</p>
+<div class="container" align="center"><h3>Test Result Registration Form</h3></div>
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card border-white">
+        <div class="card-body">
+            <img src="assets/Blood test-pana.png" style="width: 350px;" align="right">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card border-white">
+        <div class="card-body">
+            <form [formGroup]="testresultForm" (ngSubmit)="regTestResult()">
+                <div class="form-group" style="width: 25rem;">
+                    <label for="testname">Test Name:</label>
+                    <input type="text" class="form-control" id="testname" placeholder="Enter Test Name"
+                        formControlName="testname">
+                    <span class="badge badge-warning" *ngIf="testresultForm.controls['testname']?.invalid 
+                        &&  testresultForm.controls['testname']?.touched">Invalid Name</span>
+                </div>
+                <div class="form-group" style="width: 25rem;">
+                    <label for="testreading">Test Reading:</label>
+                    <input type="text" class="form-control" id="testreading" placeholder="Enter Test Reading"
+                        formControlName="testreading">
+                    <span class="badge badge-warning" *ngIf="testresultForm.controls['testreading']?.invalid 
+                        &&  testresultForm.controls['testreading']?.touched">Invalid test Reading</span>
+                </div>
+                <div class="form-group" style="width: 25rem;">
+                    <label for="condition">Test Condition:</label>
+                    <input type="text" class="form-control" id="condition" placeholder="Enter Test Condition"
+                        formControlName="condition">
+                    <!-- <span class="badge badge-warning" *ngIf="condition?.touched && condition?.invalid">Invalid Name</span> -->
+                    <span class="badge badge-warning" *ngIf="testresultForm.controls['condition']?.invalid 
+                        &&  testresultForm.controls['condition']?.touched">Invalid Condition</span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,1 +1,58 @@
-<p>add-diagnostic-test works!</p>
+<div class="container" style="text-align: center">
+    <h3 style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;padding-top: 10px;">Diagnostic Test Registration</h3>
+</div>
+<div>
+    <table>
+        <tr>
+            <td style="float: left; padding-left: 50px;">
+                    <img style="height:300px; width:400px" src="../../../../assets/images/dtest.png">                
+            </td>
+            <td style="vertical-align:top; padding-top:50px; padding-left: 100px;">                
+                    <h3 style="color: red;">{{errorMessage}}</h3>
+                    <form [formGroup]="testForm" (ngSubmit)="addTest()">   
+                        <table style="width:100%;padding-left:-25px;">
+                            <tr>
+                                <td style="padding-bottom: 15px;" >   
+                                    <input style="width: 500px;" id="id" class="form-control" placeholder="Enter Test ID" formControlName="id">
+                                    <span class="badge badge-warning" *ngIf="id?.touched  && id?.invalid">Invalid TestID</span>                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 15px;">
+                                    <input id="testname" class="form-control" placeholder="Enter testname" formControlName="testname">
+                            <span class="badge badge-warning" *ngIf="testname?.touched  && testname?.invalid">Invalid testname</span>                                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 15px;">
+                                    <input id="testprice" class="form-control" placeholder="Enter testprice" formControlName="testprice">
+                            <span class="badge badge-warning" *ngIf="testprice?.touched  && testprice?.invalid">Invalid testprice</span>                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 15px;">
+                                    <input id="normalvalue" class="form-control" placeholder="Enter normalvalue" formControlName="normalvalue">
+                            <span class="badge badge-warning" *ngIf="normalvalue?.touched  && normalvalue?.invalid">Invalid normalvalue</span>                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 15px;">
+                                    <input id="units" class="form-control" placeholder="Enter Units" formControlName="units">
+                                    <span class="badge badge-warning" *ngIf="units?.touched && units?.invalid">Invalid Units</span>    
+                                </td>
+                            </tr>
+                        </table>                                                                              
+                        <div style="text-align: center; padding-top: 10px;">
+                            <button type="submit" class="btn btn-success" [disabled]="!testForm.valid">AddTest</button>
+                        </div>
+                    </form>
+                    <!--<p *ngIf="submitted">Test added successfully</p> -->               
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="container" style="text-align: right;">
+    
+</div>
+

@@ -1,1 +1,87 @@
-<p>view-appointment works!</p>
+<!--<div
+  class="container animate__animated animate__fadeInDown"
+  *ngIf="!hasAppointments"
+>
+  <h1 class="text-muted text-center">You Have No Appointments</h1>
+</div>
+<div
+  class="container mt-5 animate__animated animate__fadeInDown"
+  *ngIf="hasAppointments"
+>
+  <div
+    class="card mb-5 rounded border shadow-sm"
+    *ngFor="let i of appointments"
+  >
+    <div
+      class="card-header"
+      [ngClass]="{
+        'bg-success': check(i.approvalStatus) == 2,
+        'bg-warning': check(i.approvalStatus) == 0
+      }"
+    >
+      {{ i.appointmentdate }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ statusPipe(i.approvalStatus) }}</h5>
+      <p class="card-text"></p>
+    </div>
+
+    <div class="card-columns mb-3" *ngIf="i.centers != null">
+      <div class="col">Diagnostic Center : {{ i.centers.cname }}</div>
+      <div class="col">Email : {{ i.centers.contactemail }}</div>
+      <div class="col">
+        Contact No: &nbsp;+91 {{ i.centers.contactno }}
+      </div>
+      <div class="col">Address : {{ i.centers.address }}</div>
+    </div>
+
+    <div
+      class="card-footer"
+      *ngIf="i.tests != null && i.tests.length > 0"
+    >
+      <h5 class="card-title">Tests Opted For :</h5>
+      <div class="row" *ngFor="let dt of i.tests; let in = index">
+        <div class="col-3">Test Name :{{ dt.testname }}</div>
+        <div class="col-3">units: {{ dt.units }}</div>
+        <div class="col-3">Normal Value : {{ dt.normalvalue }}</div>
+        <div class="col-3">Test Price : {{ dt.testprice }}</div>
+      </div>
+    </div>
+    <div
+      class="card-body"
+      *ngIf="check(i.approvalStatus) == 2 && i.testResults.length > 0"
+    >
+      <h5 class="card-title">Tests Results :</h5>
+      <div class="row" *ngFor="let tr of i.testResults">
+        <div class="col-4">{{ tr.testname }}</div>
+        <div class="col-4">Reading : {{ tr.testreading }}</div>
+        <div class="col-4">Condition : {{ tr.condition }}</div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="container">
+  <h4>Appointments Booked</h4>
+</div>
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Appointmnent Date</th>
+        <th>approvalStatus</th>
+        <th>Diagnostic Center</th>
+        <th>Contact Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of appointments">
+        <td> {{ i.appointmentdate }}</td>
+        <td>approval pending</td>
+        <td>{{i.centers.cname}}</td>
+        <td>{{i.centers.contactemail}}</td>
+        </tr>
+    
+    </tbody>
+</table>
+</div>

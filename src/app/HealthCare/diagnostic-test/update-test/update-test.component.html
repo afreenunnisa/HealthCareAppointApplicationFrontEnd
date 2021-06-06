@@ -1,1 +1,47 @@
-<p>update-test works!</p>
+<div class="container">
+    <form (ngSubmit)="updateDtest()" class="form">
+        <h3 style="font-weight: bold;text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;padding-top: 10px;">Update Details</h3>
+      <table>
+        <tr>          
+            <td style="text-align: left;padding-top: 50px;">
+            <img style="height:400px;vertical-align: middle;" src="https://previews.123rf.com/images/unitonevector/unitonevector1907/unitonevector190700468/127783590-flat-cartoon-doctor-make-diagnostic-test-screen-liver-look-at-monitor-in-clinic-patient-in-x-ray-mac.jpg">                    
+          </td>
+          <td style="vertical-align:top; padding-top:50px; padding-left: 100px;">
+            <table style="width:100%;font-weight: bold; font-size: large; padding-left:-25px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            <tr>
+              <td style="padding-bottom: 15px;">
+                Test Name
+                <input id="testname" style="width: 400px;" class="form-control" [(ngModel)]="DiagnosticTest.testname" name="testname" required>                
+               <!--<span class="badge badge-warning" *ngIf="testname?.touched  && testname?.invalid">Invalid testname</span>-->                                                          
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 15px;">
+                Test Price
+                <input class="form-control" type="number" [(ngModel)]="DiagnosticTest.testprice" name="testprice" required>
+                <!--<span class="badge badge-warning" *ngIf="testprice?.touched  && testprice?.invalid">Invalid testprice</span>-->                                                           
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 15px;">
+                normalvalue
+                <input class="form-control" type="number" [(ngModel)]="DiagnosticTest.normalvalue" name="normalvalue" required>    
+                <!--<span class="badge badge-warning" *ngIf="normalvalue?.touched  && normalvalue?.invalid">Invalid normalvalue</span>-->                                                           
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 15px;">
+                Units
+                <input class="form-control" type="text" [(ngModel)]="DiagnosticTest.units" name="units" required>  
+                <!--<span class="badge badge-warning" *ngIf="units?.touched && units?.invalid">Invalid Units</span>-->    
+              </td> 
+            </tr>            
+            </table>
+            <div style="text-align: center; padding-top: 10px;" class="form-group">
+              <button type="submit" class="btn btn-success">Update Test</button>
+          </div>
+          </td>         
+        </tr>
+      </table>                
+        </form>    
+  </div>

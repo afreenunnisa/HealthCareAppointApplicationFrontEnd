@@ -10,7 +10,6 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
   users!: User[];
   presentUser!: User;
   updateReq = false;

@@ -32,7 +32,7 @@ export class LoginService {
           this.User = new User();
           this.user.role = 'user';
           this.Status = false;
-          window.location.href = 'http://localhost:4200';
+         window.location.href = 'http://localhost:4200';
         },
         (error) => {
           console.log(error);
@@ -66,7 +66,7 @@ export class LoginService {
     return this.user.loggedIn;
   }
 
-  get userid() {
+  get id() {
     return this.user.id;
   }
 }

@@ -1,1 +1,16 @@
-<p>testdetails works!</p>
+<div class="container">
+    <hr>
+    <div class="card border-primary mb-3" style="max-width: 36rem;" *ngFor="let t of tests">
+      <div class="card-header bg-primary text-white" align="right">Test ID:{{t.id}}</div>
+      <div class="card-body text-info">
+        <div class="container" align="right">
+        <img class="card-img" src="assets/blood test.jpg" alt="Card image" style="float: right;"></div>
+        <div class="card-img-overlay">
+          <h4 class="card-title text-white">Test Name: {{t.testname}}</h4>
+          <p class="card-text">Normal Value: {{t.normalvalue}}</p>
+          <p class="card-text">Units: {{t.units}}</p>
+          <p class="card-text">₹{{t.testprice}}/-</p>
+        </div>
+      </div>
+    </div>
+  </div>

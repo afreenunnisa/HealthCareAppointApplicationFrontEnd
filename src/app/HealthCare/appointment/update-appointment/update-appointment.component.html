@@ -1,1 +1,37 @@
-<p>update-appointment works!</p>
+<div
+  class="container mt-5 justify-content-center animate__animated animate__fadeInDown"
+  *ngIf="hasAppointments; else noapps"
+>
+  <div class="col-4 input-group">
+    <input
+      type="text"
+      [(ngModel)]="search"
+      class="form-control mb-3"
+      placeholder="Search By Appointment Id,Date,Center"
+    />
+  </div>
+  <div class="form-check m-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="Check1"
+      (change)="checkChange()"
+    />
+    <label class="form-check-label" for="Check1">
+      Check This Box To Get All Older Appointments
+    </label>
+  </div>
+  <div *ngFor="let i of appointments | filter: search">
+    <div *ngIf="check(i.approvalStatus) == 2">
+      <div class="card mb-5 rounded border shadow-sm">
+        <app-UpdateEach [appointment]="i"></app-UpdateEach>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noapps>
+  <div class="container">
+    <h1 class="text-muted text-center">You Have No Appointments To verify</h1>
+  </div>
+</ng-template>

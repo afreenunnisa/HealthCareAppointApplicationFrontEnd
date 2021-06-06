@@ -1,1 +1,73 @@
-<p>update-each works!</p>
+<div class="card-header">
+    <div class="row">
+      <div class="col-6">
+        {{ appointment.appointmentdate | filter: search }}
+      </div>
+      <div class="col-5">
+        Appointment ID : {{ appointment.id | filter: search }}
+      </div>
+      <div class="col-1" data-toggle="tooltip" title="Add Test Results">
+        <button class="btn" (click)="addTestResult()">
+          <h5 class="bi bi-plus-circle-dotted pl-2 pr-2"></h5>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div
+    class="card-columns mt-3 mb-3"
+    *ngIf="appointment.centers != null"
+  >
+    <div class="col">
+      Diagnostic Center :&nbsp;
+      {{ appointment.centers.cname | filter: search }}
+    </div>
+    <div class="col">
+      Email :&nbsp; {{ appointment.centers.contactemail }}
+    </div>
+    <div class="col">
+      Contact No: &nbsp;+91
+      {{ appointment.centers.contactno }}
+    </div>
+    <div class="col">
+      Address :&nbsp; {{ appointment.centers.address }}
+    </div>
+  </div>
+  <div
+    class="card-footer"
+    *ngIf="
+      appointment.tests != null &&
+      appointment.tests.length > 0
+    "
+  >
+    <h5 class="card-title">Tests Opted For :</h5>
+    <div
+      class="card-text"
+      *ngFor="let dt of appointment.tests | filter: search"
+    >
+      {{ dt.testname | filter: search }}
+    </div>
+  </div>
+  <div class="card-body" *ngIf="appointment.testResults.length > 0">
+    <h5 class="card-title">Tests Results :</h5>
+    <div
+      class="row p-1 justify-content-center"
+      *ngFor="let tr of appointment.testResults"
+    >
+      <div class="col-3">{{ tr.testname }}</div>
+      <div class="col-3">Reading : {{ tr.testreading }}</div>
+      <div class="col-3">Condition : {{ tr.condition }}</div>
+      <div class="col-3">
+        <button
+          class="btn btn-light"
+          [routerLink]="['/testresult/updateresult', tr.id]"
+        >
+          <i class="bi bi-pen-fill"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <app-UAppForm
+    *ngIf="addTest"
+    (testResultAddEvent)="testResAdded($event)"
+  ></app-UAppForm>

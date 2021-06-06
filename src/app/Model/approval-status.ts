@@ -1,2 +1,5 @@
-export enum ApprovalStatus {
-}
+export enum AppointmentStatus {
+    statusnotapproved = 1,
+    approved,
+    cancelled,
+  }

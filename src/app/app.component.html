@@ -1,27 +1,77 @@
-
 <nav class="navbar navbar-default">
-    <div class="container">
-      <a href="#" class="navbar-brand" style="color: white;">HEALTH CARE APPOINTMENT APPLICATION
-      </a>
-      <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Book An Appointment</a></li>
-        <li><a href="#">AboutUs</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Email</a></li>
-            </ul>
+  <div class="container">
+    <a href="#" class="navbar-brand" style="color: white;">HEALTH CARE APPOINTMENT APPLICATION
+    </a>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mr-auto">
+      <li><a role="button" class="nav-link text-dark user-select-none" *ngIf="loggerRole == 'user'" routerLink="home"
+          routerLinkActive="active">Home</a></li>
+      <li><a role="button" class="nav-link text-dark user-select-none" *ngIf="loggerRole == 'user'"
+          (click)="appointment()">Book An Appointment</a></li>
+      <li>
+        <a role="button" class="nav-link text-dark user-select-none" *ngIf="loggerRole == 'user' && loginStatus"
+          routerLink="appointment/viewappointment" routerLinkActive="active">View My Appointments</a>
+      </li>
+      <li>
+        <a role="button" class="nav-link text-dark user-select-none" *ngIf="loggerRole == 'user' && loginStatus"
+          routerLink="patient/update" routerLinkActive="active">Edit Profile</a></li>
+      <li>
+        <a role="button" class="nav-link text-dark user-select-none" *ngIf="loggerRole == 'ADMIN'"
+          routerLink="appointment/verifyappointment">Verify Appointments</a>
+      </li>
+     <!-- <li>
+        <a role="button" class="nav-link text-dark user-select-none" *ngIf="loggerRole == 'ADMIN'"
+          routerLink="appointment/updateappointments">Update Appointments</a>
+      </li>-->
+      <li>
+        <a class="nav-link text-dark user-select-none" role="button" tabindex="-1" *ngIf="loggerRole == 'user' && loginStatus"
+          routerLink="diagnosticCenter/all">
+          Diagnostic Center</a>
+      </li>
+      <li>
+        <a class="nav-link text-dark user-select-none" role="button" tabindex="-1" *ngIf="loggerRole == 'ADMIN'"
+          routerLink="diagnosticCenter">
+         View Diagnostic Center</a>
+      </li>
+      <li>
+        <a class="nav-link text-dark user-select-none" role="button" tabindex="-1" *ngIf="loggerRole == 'ADMIN'"
+          routerLink="diagnostictest">
+          Diagnostic Test</a>
+      </li>
+      <li>
+        <a class="nav-link text-dark user-select-none" role="button" tabindex="-1" *ngIf="loggerRole == 'ADMIN'"
+          routerLink="testresult">
+          Test Result</a>
+      </li>
+      <li>
+        <a class="nav-link text-dark user-select-none" role="button" tabindex="-1" *ngIf="loggerRole == 'ADMIN'"
+          routerLink="user">User Control</a>
+      </li>
+      <li><a href="home">AboutUs</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a role="button" class="dropdown-item text-dark user-select-none" href="Contact No:987654321">Contact</a>
           </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </nav>
-    
-<app-home></app-home>
+          <li><a role="button" class="dropdown-item text-dark user-select-none"
+              href="healthcareappointment@gmail.com.com">Email</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a *ngIf="!loginStatus" routerLink="user"><span
+            class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a *ngIf="!loginStatus" routerLink="login" routerLinkActive="active"><span
+            class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+  <li> <a *ngIf="loginStatus" (click)="logout()"><span
+    class="glyphicon glyphicon-user"></span>
+      Sign Out
+   </a></li>
+    </ul>
+  </div>
+  </div>
+</nav>
 <router-outlet></router-outlet>

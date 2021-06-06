@@ -1,1 +1,26 @@
-<p>all-testresult works!</p>
+<div class="container">
+    <h1 class="heading">All Test Result Details</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Test Result ID</th>
+                <th>Test Name</th>
+                <th>Test Reading</th>
+                <th>Test Condition</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of testres">
+                <td>{{t.id}</td>
+                <td>{{t.testname}}</td>
+                <td>{{t.testreading}}</td>
+                <td>{{t.condition}}</td>
+                <td>
+                    <button class="btn btn-link" (click)="removeTestResult(t.id)">Remove</button>
+                    <button class="btn btn-link" [routerLink]="['/testresult/updateresult',t.id]">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

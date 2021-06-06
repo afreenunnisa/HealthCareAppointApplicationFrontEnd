@@ -9,7 +9,6 @@ import { LoginService } from 'src/app/Services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   formgrp!: FormGroup;
   errormsg: string = '';
   constructor(
@@ -32,9 +31,15 @@ export class LoginComponent implements OnInit {
       this.log.login(username, pass)?.subscribe(
         (data) => {
           this.log.User = data;
+          alert(data["role"]);
+          alert(data["jwt"]);
+          let role=data.role;
+          sessionStorage.setItem("role",role);
           this.log.Status = true;
-         if (this.log.Role == 'user') {
-            this.routes.navigate(['appointment/viewappointment']);
+          if (role == 'user') {
+           //this.routes.navigate(['patient/update']);
+           //this.routes.navigate(['home']);
+           this.routes.navigate(['appointment/createappointment']);
           } else {
             this.routes.navigate(['appointment/verifyappointment']);
           }
@@ -48,6 +53,8 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
+   // sessionStorage.removeItem("role");
     this.log.logout();
   }
 }
+ 
